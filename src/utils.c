@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:15:23 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/27 23:44:05 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/28 21:40:50 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void lstadd_back(stack *stack_a, t_node* new)
             current = current->next;
             index++;
         }
-        new->index = index;
+        new->index = index + 1;
 		current->next = new;
         new->prev = current;
     }

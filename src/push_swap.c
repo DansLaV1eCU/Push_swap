@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/27 23:30:46 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/28 21:39:58 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int check_parameters(int len, char** s, stack *stack_a)
 {
     long value;
     int count;
+    t_node *temp;
 
     count = 1;
     while (count < len)
@@ -54,15 +55,34 @@ int check_parameters(int len, char** s, stack *stack_a)
     }
     if (!check_dublicates(stack_a))
         return (0);
+    temp = stack_a->start;
+    while (temp->next)
+        temp = temp->next;
+    stack_a->end = temp;
     return (1);
+}
+
+void print_stack(stack *s)
+{
+    t_node *temp;
+
+    ft_printf("Stack %c - length %d\n", s->name, s->len);
+    ft_printf("Start value %d - start index %d\n", s->start->value, s->start->index);
+    ft_printf("End value %d - end index %d\n\n", s->end->value, s->end->index);
+    temp = s->start;
+    while (temp)
+    {
+        ft_printf("Index: %d - Value: %d\n", temp->index, temp->value);
+        temp = temp->next;
+    }
 }
 
 int main(int argc, char** argv)
 {
     stack stack_a = {0};
-//    stack stack_b = {0};
+    stack stack_b = {0};
 
-    if (argc == 1)
+    if (argc == 1 || stack_b.len)
         return (0);
     if (!check_parameters(argc, argv, &stack_a))
     {   
@@ -72,13 +92,7 @@ int main(int argc, char** argv)
     }
     else
     {
-        while (stack_a.start)
-        {
-            printf("%ld\n",stack_a.start->value);
-            stack_a.start = stack_a.start->next;
-        }
-        printf("Norm\n");
+        print_stack(&stack_a);
     }
-        
     return (0);
 }
