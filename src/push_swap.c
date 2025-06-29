@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/29 23:37:48 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/30 00:47:25 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,11 +280,52 @@ void move_to_second_stack(stack *a, stack *b, t_node *node)
         easy_push(a, b, node);
 }
 
+void rotate_first(stack *a, t_node *node)
+{
+    int index_in_a;
+
+    index_in_a = find_biggest_lower(a, node);
+    if (a->len / 2 >= index_in_a)
+        while (index_in_a-- != 0)
+            rotate_one_stack(a,1);
+    else
+        while (index_in_a++ != a->len)
+            reverse_rotate_one_stack(a,1);
+}
+
+void rotate_to_min_at_top(stack *a)
+{
+    int index;
+
+    index = find_min(a);
+    if (a->len / 2 >= index)
+        while (index-- != 0)
+            rotate_one_stack(a,1);
+    else
+        while (index++ != a->len)
+            reverse_rotate_one_stack(a,1);
+}
+
+void free_stack(stack *a)
+{
+    t_node *temp;
+    t_node *move;
+
+    temp = a->start;
+    while (temp)
+    {
+        move = temp;
+        temp = temp->next;
+        free(move);
+    }
+}
+
 void push_swap(stack *a, stack *b)
 {
     if (a->len <= 3)
     {
         sort_small_stack(a);
+        free_stack(a);
         return ;
     }
     push(b,a);
@@ -298,6 +339,7 @@ void push_swap(stack *a, stack *b)
         push(a,b);
     }
     rotate_to_min_at_top(a);
+    free_stack(a);
 }
 
 int main(int argc, char** argv)
