@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/28 21:22:08 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/29 19:33:14 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_stack
     t_node* start;
     t_node* end;
 } stack;
+
+typedef struct s_two_ints
+{
+    int count;
+    int variant;
+} t_two_ints;
 
 t_node *node_new(long value);
 void lstadd_back(stack *stack_a, t_node* new);
