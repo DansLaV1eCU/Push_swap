@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/29 20:10:54 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/29 23:37:48 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,10 +216,10 @@ void rr_push(stack *a, stack *b, t_node *node)
     while (index_in_a-- > 0 && index_in_b-- > 0)
         rotate_both_stacks(a,b);
     if (index_in_a == 0)
-        while (index_in_b > 0)
+        while (index_in_b-- > 0)
             rotate_one_stack(b,1);
     else    
-        while (index_in_a > 0)
+        while (index_in_a-- > 0)
             rotate_one_stack(a,1);
     push(b,a);
 }
@@ -230,16 +230,40 @@ void rrr_push(stack *a, stack *b, t_node *node)
     int index_in_a;
     int count;
 
-    index_in_b = find_biggest_lower(b, node);
     index_in_a = node->index;
-    while (index_in_a-- > 0 && index_in_b-- > 0)
-        rotate_both_stacks(a,b);
-    if (index_in_a == 0)
-        while (index_in_b > 0)
-            rotate_one_stack(b,1);
+    index_in_b = find_biggest_lower(b, node);
+    while (index_in_a != a->len && index_in_b != b->len)
+    {
+        reverse_rotate_both_stacks(a,b);
+        index_in_a++;
+        index_in_b++;
+    }
+    if (index_in_a == a->len)
+        while (index_in_b++ != b->len)
+            reverse_rotate_one_stack(b,1);
     else    
-        while (index_in_a > 0)
+        while (index_in_a++ != a->len)
+            reverse_rotate_one_stack(a,1);
+    push(b,a);
+}
+
+void easy_push(stack *a, stack *b, t_node *node)
+{
+    int index_in_b;
+
+    index_in_b = find_biggest_lower(b, node);
+    if (a->len / 2 >= node->index)
+        while (node->index != 0)
             rotate_one_stack(a,1);
+    else
+        while (node->index != 0)
+            reverse_rotate_one_stack(a,1);
+    if (b->len / 2 >= index_in_b)
+        while (index_in_b-- != 0)
+            rotate_one_stack(b,1);
+    else
+        while (index_in_b++ != b->len)
+            reverse_rotate_one_stack(b,1);
     push(b,a);
 }
 
