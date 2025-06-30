@@ -16,9 +16,15 @@ INC			=	-I ./includes/\
 
 # Sources
 SRC_PATH	=	src/
-SRC			=	push_swap.c \
-				operations.c \
-				utils.c 
+SRC			=	add_free_stack.c \
+				find_cheapest.c \
+				move_cheapest.c \
+				operations1.c \
+				operations2.c \
+				push_swap.c \
+				sort_utils.c \
+				utils.c \
+
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
