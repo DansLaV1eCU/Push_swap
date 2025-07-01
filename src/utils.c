@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:15:23 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/30 19:29:30 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/30 19:52:49 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,24 @@ t_node *node_new(long value)
 void lstadd_back(stack *stack_a, t_node* new)
 {
     t_node	*current;
-    int index;
 
-    index = 0;
     if (stack_a->start == NULL)
     {
         stack_a->start = new;
-        new->index = index;
+		stack_a->end = new;
+        new->index = 0;
+		stack_a->len++;
     }
     else
     {
         current = stack_a->start;
 		while (current->next != NULL)
-        {
             current = current->next;
-            index++;
-        }
-        new->index = index + 1;
+        new->index = stack_a->len;
+		stack_a->len++;
 		current->next = new;
         new->prev = current;
+		stack_a->end = new;
     }
 }
 

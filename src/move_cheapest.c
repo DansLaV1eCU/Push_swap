@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 18:36:52 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/30 19:27:17 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/01 04:13:35 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ void rr_push(stack *a, stack *b, t_node *node)
 
     index_in_b = find_biggest_lower(b, node->value);
     index_in_a = node->index;
-    while (index_in_a-- > 0 && index_in_b-- > 0)
+    while (index_in_a > 0 && index_in_b > 0)
+    {
         rotate_both_stacks(a,b);
+        index_in_a--;
+        index_in_b--;
+    }
     if (index_in_a == 0)
         while (index_in_b-- > 0)
             rotate_one_stack(b,1);
@@ -37,7 +41,7 @@ void rrr_push(stack *a, stack *b, t_node *node)
 
     index_in_a = node->index;
     index_in_b = find_biggest_lower(b, node->value);
-    while (index_in_a != a->len && index_in_b != b->len)
+    while (index_in_a < a->len && index_in_b < b->len)
     {
         reverse_rotate_both_stacks(a,b);
         index_in_a++;
@@ -77,10 +81,11 @@ void move_to_second_stack(stack *a, stack *b, t_node *node)
     int cond;
 
     cond = count_operations(a,b,node).variant;
-    if (cond == 1)
-        rr_push(a, b, node);
-    if (cond == 2)
-        rrr_push(a, b, node);
+    // ft_printf("%d\n", cond);
     if (cond == 3)
         easy_push(a, b, node);
+    else if (cond == 1)
+        rr_push(a, b, node);
+    else if (cond == 2)
+        rrr_push(a, b, node);
 }

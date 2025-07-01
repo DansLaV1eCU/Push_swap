@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/30 19:17:31 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/01 02:35:05 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,14 @@ void reverse_rotate_both_stacks(stack *s1, stack *s2);
 
 // find_cheapest
 int find_biggest_lower(stack *b, int value);
+int find_lowest_bigger(stack *b, int value);
 t_two_ints min_of_three(int a, int b, int c);
 t_two_ints count_operations(stack *a, stack *b, t_node *node);
 t_node *find_cheapest(stack *a, stack *b);
 
 // sort_utils
 int find_min(stack *a);
+int find_max(stack *a);
 void sort_small_stack(stack *a);
 void rotate_first(stack *a, t_node *node);
 void rotate_to_min_at_top(stack *a);

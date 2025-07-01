@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/06/30 18:32:30 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/06/30 21:34:37 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int check_parameters(int len, char** s, stack *stack_a)
 {
     long value;
     int count;
-    t_node *temp;
 
     count = 1;
     while (count < len)
@@ -55,10 +54,6 @@ int check_parameters(int len, char** s, stack *stack_a)
     }
     if (!check_dublicates(stack_a))
         return (0);
-    temp = stack_a->start;
-    while (temp->next)
-        temp = temp->next;
-    stack_a->end = temp;
     return (1);
 }
 
@@ -81,8 +76,14 @@ void print_stack(stack *s)
     t_node *temp;
 
     ft_printf("Stack %c - length %d\n", s->name, s->len);
-    ft_printf("Start value %d - start index %d\n", s->start->value, s->start->index);
-    ft_printf("End value %d - end index %d\n\n", s->end->value, s->end->index);
+    if (s->start)
+        ft_printf("Start value %d - start index %d\n", s->start->value, s->start->index);
+    else
+        ft_printf("Start value NULL - start index NULL\n");
+    if (s->end)
+        ft_printf("End value %d - end index %d\n\n", s->end->value, s->end->index);
+    else    
+        ft_printf("End value NULL - end index NULL\n\n");
     temp = s->start;
     while (temp)
     {
