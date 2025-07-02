@@ -3,7 +3,7 @@ NAME	= push_swap
 
 # Compiler
 CC		= cc
-CFLAGS	= -Werror -Wextra -Wall
+CFLAGS	= -Werror -Wextra -Wall -std=c99
 
 # Libft
 LIBFT_PATH	= ~/libft/
