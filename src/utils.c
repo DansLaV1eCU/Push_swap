@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:15:23 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:28 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 18:02:46 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ long	push_atoi(char *str)
 	if (str[count] == '-' || str[count] == '+')
 	{
 		if (str[count + 1] < '0' || str[count + 1] > '9')
-			return (0);
+			return (10000000000);
 		else if (str[count] == '-')
 			count_minus = -1;
 		count++;
 	}
 	if (str[count] && str[count] == '0' && str[count + 1] != '\0')
-		return (0);
+		return (10000000000);
 	while (str[count] >= '0' && str[count] <= '9')
 		result = result * 10 + (str[count++] - '0');
 	if (str[count] != '\0' && (str[count] <= 9 || str[count] >= 13)
 		&& str[count] != 32)
-		return (0);
+		return (10000000000);
 	return (result * count_minus);
 }

@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 17:45:06 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 18:03:02 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,12 @@ int	check_parameters(int len, char **s, t_stack *stack_a)
 		str = split(s[count++]);
 		if (!str)
 			return (0);
-		i = 0;
-		while (str[i])
+		i = -1;
+		while (str[++i])
 		{
-			if (ft_strncmp(str[i], "0", 2) == 0)
-				value = 0;
-			else
-			{
-				value = push_atoi(str[i]);
-				if (value == 0 || value > 2147483647 || value < -2147483648)
-					return (0);
-			}
-			i++;
+			value = push_atoi(str[i]);
+			if (value > 2147483647 || value < -2147483648)
+				return (0);
 			lstadd_back(stack_a, node_new(value));
 		}
 	}
