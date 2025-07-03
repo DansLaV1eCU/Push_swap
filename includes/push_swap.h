@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 01:34:39 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 18:16:37 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int					check_dublicates(t_stack *stack_a);
 int					check_parameters(int len, char **s, t_stack *stack_a);
 void				free_stack(t_stack *a);
 void				print_stack(t_stack *s);
+int					is_sorted(t_stack *a);
 
 // push_swap
 void				push_swap(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 18:03:02 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 18:30:08 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,33 @@ void	free_stack(t_stack *a)
 		temp = temp->next;
 		free(move);
 	}
+}
+
+int	is_sorted(t_stack *a)
+{
+	int		flag;
+	t_node	*temp;
+
+	flag = 0;
+	temp = a->start;
+	while (temp)
+	{
+		if (temp->next)
+			if (temp->value > temp->next->value)
+				flag++;
+		temp = temp->next;
+	}
+	if (flag == 0)
+		return (1);
+	if (a->end > a->start)
+		flag++;
+	if (flag == 1)
+	{
+		rotate_to_min_at_top(a);
+		return (1);
+	}
+	else
+		return (0);
 }
 
 void	print_stack(t_stack *s)

@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 17:44:55 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 18:27:42 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	push_swap(t_stack *a, t_stack *b)
 				swap_one_stack(a, 1);
 		return ;
 	}
+	else if (is_sorted(a) == 1)
+		return ;
 	push(b, a);
 	push(b, a);
 	while (a->len > 3)
