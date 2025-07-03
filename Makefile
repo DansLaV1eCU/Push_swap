@@ -24,6 +24,7 @@ SRC			=	add_free_stack.c \
 				push_swap.c \
 				sort_utils.c \
 				utils.c \
+				split.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 

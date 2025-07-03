@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:38 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 17:45:06 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,29 @@ int	check_parameters(int len, char **s, t_stack *stack_a)
 {
 	long	value;
 	int		count;
+	int		i;
+	char	**str;
 
 	count = 1;
 	while (count < len)
 	{
-		if (ft_strncmp(s[count], "0", 2) == 0)
-			value = 0;
-		else
+		str = split(s[count++]);
+		if (!str)
+			return (0);
+		i = 0;
+		while (str[i])
 		{
-			value = push_atoi(s[count]);
-			if (value == 0 || value > 2147483647 || value < -2147483648)
-				return (0);
+			if (ft_strncmp(str[i], "0", 2) == 0)
+				value = 0;
+			else
+			{
+				value = push_atoi(str[i]);
+				if (value == 0 || value > 2147483647 || value < -2147483648)
+					return (0);
+			}
+			i++;
+			lstadd_back(stack_a, node_new(value));
 		}
-		lstadd_back(stack_a, node_new(value));
-		count++;
 	}
 	if (!check_dublicates(stack_a))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:31 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 17:44:55 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	{
 		free_stack(&stack_a);
 		write(2, "Error\n", 6);
-		return (0);
+		exit(1);
 	}
 	else
 	{

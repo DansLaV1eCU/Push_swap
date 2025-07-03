@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:07:37 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 01:34:39 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,11 @@ t_node				*node_new(long value);
 void				lstadd_back(t_stack *stack_a, t_node *new);
 void				free_stack(t_stack *s);
 long				push_atoi(char *str);
+
+// split
+void				*clean1(char **res, int count);
+int					count_words(const char *s);
+char				*get_next_word(const char **s);
+char				**split(const char *s);
 
 #endif

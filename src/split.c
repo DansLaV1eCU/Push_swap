@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:26 by llupache          #+#    #+#             */
-/*   Updated: 2025/07/03 01:53:22 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 02:11:41 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*clean1(char **res, int count)
 	return (NULL);
 }
 
-static int	count_words(const char *s, char c)
+static int	count_words(const char *s)
 {
 	int	count;
 	int	in_word;
@@ -29,29 +29,29 @@ static int	count_words(const char *s, char c)
 	in_word = 0;
 	while (*s)
 	{
-		if (*s != c && !in_word)
+		if (*s != 32 && (*s <= 9 || *s >= 13) && !in_word)
 		{
 			in_word = 1;
 			count++;
 		}
-		else if (*s == c)
+		else if (*s == 32 || (*s >= 9 && *s <= 13))
 			in_word = 0;
 		s++;
 	}
 	return (count);
 }
 
-static char	*get_next_word(const char **s, char c)
+static char	*get_next_word(const char **s)
 {
 	const char	*start;
 	size_t		len;
 	char		*word;
 
 	start = *s;
-	while (**s && **s == c)
+	while (**s && (**s == 32 || (**s >= 9 && **s <= 13)))
 		(*s)++;
 	start = *s;
-	while (**s && **s != c)
+	while (**s && (**s != 32 && (**s <= 9 || **s >= 13)))
 		(*s)++;
 	len = *s - start;
 	word = (char *)malloc(len + 1);
@@ -62,24 +62,24 @@ static char	*get_next_word(const char **s, char c)
 	return (word);
 }
 
-char	**ft_split(const char *s, char c)
+char	**split(const char *s)
 {
 	const char	*s_ptr;
 	int			word_count;
 	char		**result;
 	int			count;
 
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	s_ptr = (char *)s;
 	count = 0;
-	word_count = count_words(s, c);
+	word_count = count_words(s);
 	result = malloc((word_count + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	while (count < word_count)
 	{
-		result[count] = get_next_word(&s_ptr, c);
+		result[count] = get_next_word(&s_ptr);
 		if (!result[count])
 			return (clean1(result, count));
 		count++;
