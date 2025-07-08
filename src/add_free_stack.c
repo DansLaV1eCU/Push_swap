@@ -6,7 +6,7 @@
 /*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/08 18:42:58 by llupache         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:38:01 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	check_parameters(int len, char **s, t_stack *stack_a)
 	while (count < len)
 	{
 		str = split(s[count++]);
-		if (!str)
-			return (0);
+		if (!str || !*str)
+			return (free_split(str));
 		i = -1;
 		while (str[++i])
 		{
@@ -107,11 +107,14 @@ int	free_split(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str)
 	{
-		free(str[i]);
-		i++;
+		while (str[i])
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str);
 	}
-	free(str);
 	return (0);
 }

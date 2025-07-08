@@ -6,7 +6,7 @@
 /*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/08 18:34:31 by llupache         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:00:28 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void				print_stack(t_stack *s);
 
 // split
 void				*clean1(char **res, int count);
-int					count_words(const char *s);
-char				*get_next_word(const char **s);
+int					count_words1(const char *s);
+char				*get_next_word1(const char **s);
 char				**split(const char *s);
 
 #endif

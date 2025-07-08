@@ -3,10 +3,10 @@ NAME	= push_swap
 
 # Compiler
 CC		= cc
-CFLAGS	= -Werror -Wextra -Wall -std=c99
+CFLAGS	= -Werror -Wextra -Wall
 
 # Libft
-LIBFT_PATH	= ~/libft/
+LIBFT_PATH	= includes/libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
@@ -23,9 +23,8 @@ SRC			=	add_free_stack.c \
 				operations2.c \
 				push_swap.c \
 				sort_utils.c \
-				utils.c \
-				split.c
-
+				split.c \
+				utils.c 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
@@ -33,26 +32,22 @@ OBJ_PATH	= obj/
 OBJ			= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
 
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
-
-$(OBJS): $(OBJ_PATH)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c | $(OBJ_PATH)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
 
 $(LIBFT):
 	@echo "Making libft..."
-	@make -sC $(LIBFT_PATH)
+	make -sC $(LIBFT_PATH)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) | $(LIBFT)
 	@echo "Compiling push_swap..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC)
 	@echo "push_swap is ready."
-
-bonus: all
 
 clean:
 	@echo "Removing .o object files..."
