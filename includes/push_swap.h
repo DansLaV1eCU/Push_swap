@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 18:16:37 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 18:34:31 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_two_ints
 int					check_dublicates(t_stack *stack_a);
 int					check_parameters(int len, char **s, t_stack *stack_a);
 void				free_stack(t_stack *a);
-void				print_stack(t_stack *s);
 int					is_sorted(t_stack *a);
+int					free_split(char **str);
 
 // push_swap
 void				push_swap(t_stack *a, t_stack *b);
@@ -82,8 +82,8 @@ void				rotate_to_min_at_top(t_stack *a);
 // utils
 t_node				*node_new(long value);
 void				lstadd_back(t_stack *stack_a, t_node *new);
-void				free_stack(t_stack *s);
 long				push_atoi(char *str);
+void				print_stack(t_stack *s);
 
 // split
 void				*clean1(char **res, int count);

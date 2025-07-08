@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:15:23 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 18:02:46 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 18:43:50 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,35 @@ long	push_atoi(char *str)
 			count_minus = -1;
 		count++;
 	}
-	if (str[count] && str[count] == '0' && str[count + 1] != '\0')
-		return (10000000000);
+	while (str[count] == '0')
+		count++;
 	while (str[count] >= '0' && str[count] <= '9')
 		result = result * 10 + (str[count++] - '0');
 	if (str[count] != '\0' && (str[count] <= 9 || str[count] >= 13)
 		&& str[count] != 32)
 		return (10000000000);
 	return (result * count_minus);
+}
+
+void	print_stack(t_stack *s)
+{
+	t_node	*temp;
+
+	ft_printf("t_stack %c - length %d\n", s->name, s->len);
+	if (s->start)
+		ft_printf("Start value %d - start index %d\n", s->start->value,
+			s->start->index);
+	else
+		ft_printf("Start value NULL - start index NULL\n");
+	if (s->end)
+		ft_printf("End value %d - end index %d\n\n", s->end->value,
+			s->end->index);
+	else
+		ft_printf("End value NULL - end index NULL\n\n");
+	temp = s->start;
+	while (temp)
+	{
+		ft_printf("Index: %d - Value: %d\n", temp->index, temp->value);
+		temp = temp->next;
+	}
 }

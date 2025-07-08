@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_free_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:02:51 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 18:30:08 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 18:42:58 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int	check_parameters(int len, char **s, t_stack *stack_a)
 		{
 			value = push_atoi(str[i]);
 			if (value > 2147483647 || value < -2147483648)
-				return (0);
+				return (free_split(str));
 			lstadd_back(stack_a, node_new(value));
 		}
+		free_split(str);
 	}
 	if (!check_dublicates(stack_a))
 		return (0);
@@ -101,25 +102,16 @@ int	is_sorted(t_stack *a)
 		return (0);
 }
 
-void	print_stack(t_stack *s)
+int	free_split(char **str)
 {
-	t_node	*temp;
+	int	i;
 
-	ft_printf("t_stack %c - length %d\n", s->name, s->len);
-	if (s->start)
-		ft_printf("Start value %d - start index %d\n", s->start->value,
-			s->start->index);
-	else
-		ft_printf("Start value NULL - start index NULL\n");
-	if (s->end)
-		ft_printf("End value %d - end index %d\n\n", s->end->value,
-			s->end->index);
-	else
-		ft_printf("End value NULL - end index NULL\n\n");
-	temp = s->start;
-	while (temp)
+	i = 0;
+	while (str[i])
 	{
-		ft_printf("Index: %d - Value: %d\n", temp->index, temp->value);
-		temp = temp->next;
+		free(str[i]);
+		i++;
 	}
+	free(str);
+	return (0);
 }

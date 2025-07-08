@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:26 by llupache          #+#    #+#             */
-/*   Updated: 2025/07/03 02:11:41 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 18:43:21 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,27 +87,3 @@ char	**split(const char *s)
 	result[word_count] = NULL;
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-// 	char	**new;
-
-// 	str = "";
-// 	// new = ft_split("", 'a');
-// 	// printf("%s", new[0]);
-// 	if (!(new = ft_split("", 'z')))
-// 		printf("NULL");
-// 	else
-// 	{
-// 		if (!new[0])
-// 			printf("ok\n");
-// 	}
-// 	// if (!new[0])
-// 	// 	printf("ok\n");
-// 	// while (*new != NULL)
-// 	// {
-// 	// 	printf("%s, ", *new);
-// 	// 	new ++;
-// 	// }
-// }
