@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 18:52:09 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:32 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 20:48:14 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void	rotate_one_stack(t_stack *s, int p)
 		ft_printf("r%c\n", s->name);
 }
 
-void	rotate_both_stacks(t_stack *s1, t_stack *s2)
+void	rotate_both_stacks(t_stack *s1, t_stack *s2, int p)
 {
 	rotate_one_stack(s1, 0);
 	rotate_one_stack(s2, 0);
-	ft_printf("rr\n");
+	if (p)
+		ft_printf("rr\n");
 }
 
 void	reverse_rotate_one_stack(t_stack *s, int p)
@@ -51,9 +52,10 @@ void	reverse_rotate_one_stack(t_stack *s, int p)
 		ft_printf("rr%c\n", s->name);
 }
 
-void	reverse_rotate_both_stacks(t_stack *s1, t_stack *s2)
+void	reverse_rotate_both_stacks(t_stack *s1, t_stack *s2, int p)
 {
 	reverse_rotate_one_stack(s1, 0);
 	reverse_rotate_one_stack(s2, 0);
-	ft_printf("rrr\n");
+	if (p)
+		ft_printf("rrr\n");
 }

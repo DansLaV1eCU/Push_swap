@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:27:24 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:33 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 20:47:19 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ void	swap_one_stack(t_stack *s, int p)
 		ft_printf("s%c\n", s->name);
 }
 
-void	swap_both_stacks(t_stack *s1, t_stack *s2)
+void	swap_both_stacks(t_stack *s1, t_stack *s2, int p)
 {
 	swap_one_stack(s1, 0);
 	swap_one_stack(s2, 0);
-	ft_printf("ss\n");
+	if (p)
+		ft_printf("ss\n");
 }
 
-void	push(t_stack *s1, t_stack *s2)
+void	push(t_stack *s1, t_stack *s2, int p)
 {
 	t_node	*temp;
 
@@ -70,7 +71,8 @@ void	push(t_stack *s1, t_stack *s2)
 	change_index(s1, 1);
 	s1->start->index = 0;
 	change_index(s2, -1);
-	ft_printf("p%c\n", s1->name);
+	if (p)
+		ft_printf("p%c\n", s1->name);
 }
 
 void	change_index(t_stack *s, int m)

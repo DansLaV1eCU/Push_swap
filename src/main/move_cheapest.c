@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 18:36:52 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:35 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 21:17:48 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rr_push(t_stack *a, t_stack *b, t_node *node)
 	index_in_a = node->index;
 	while (index_in_a > 0 && index_in_b > 0)
 	{
-		rotate_both_stacks(a, b);
+		rotate_both_stacks(a, b, 1);
 		index_in_a--;
 		index_in_b--;
 	}
@@ -31,7 +31,7 @@ void	rr_push(t_stack *a, t_stack *b, t_node *node)
 	else
 		while (index_in_a-- > 0)
 			rotate_one_stack(a, 1);
-	push(b, a);
+	push(b, a, 1);
 }
 
 void	rrr_push(t_stack *a, t_stack *b, t_node *node)
@@ -43,7 +43,7 @@ void	rrr_push(t_stack *a, t_stack *b, t_node *node)
 	index_in_b = find_biggest_lower(b, node->value);
 	while (index_in_a < a->len && index_in_b < b->len)
 	{
-		reverse_rotate_both_stacks(a, b);
+		reverse_rotate_both_stacks(a, b, 1);
 		index_in_a++;
 		index_in_b++;
 	}
@@ -53,7 +53,7 @@ void	rrr_push(t_stack *a, t_stack *b, t_node *node)
 	else
 		while (index_in_a++ != a->len)
 			reverse_rotate_one_stack(a, 1);
-	push(b, a);
+	push(b, a, 1);
 }
 
 void	easy_push(t_stack *a, t_stack *b, t_node *node)
@@ -73,7 +73,7 @@ void	easy_push(t_stack *a, t_stack *b, t_node *node)
 	else
 		while (index_in_b++ != b->len)
 			reverse_rotate_one_stack(b, 1);
-	push(b, a);
+	push(b, a, 1);
 }
 
 void	move_to_second_stack(t_stack *a, t_stack *b, t_node *node)
