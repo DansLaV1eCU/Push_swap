@@ -6,7 +6,7 @@
 /*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 17:14:14 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/03 18:16:37 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/03 20:48:42 by danslav1e        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void				move_to_second_stack(t_stack *a, t_stack *b, t_node *node);
 
 // operations1
 void				swap_one_stack(t_stack *s, int p);
-void				swap_both_stacks(t_stack *s1, t_stack *s2);
-void				push(t_stack *s1, t_stack *s2);
+void				swap_both_stacks(t_stack *s1, t_stack *s2, int p);
+void				push(t_stack *s1, t_stack *s2, int p);
 void				change_index(t_stack *s, int m);
 
 // operations2
 void				rotate_one_stack(t_stack *s, int p);
-void				rotate_both_stacks(t_stack *s1, t_stack *s2);
+void				rotate_both_stacks(t_stack *s1, t_stack *s2, int p);
 void				reverse_rotate_one_stack(t_stack *s, int p);
-void				reverse_rotate_both_stacks(t_stack *s1, t_stack *s2);
+void				reverse_rotate_both_stacks(t_stack *s1, t_stack *s2, int p);
 
 // find_cheapest
 int					find_biggest_lower(t_stack *b, int value);

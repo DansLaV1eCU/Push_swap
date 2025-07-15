@@ -1,6 +1,9 @@
 #Program name
 NAME	= push_swap
 
+# Bonus name
+BNAME = bonus
+
 # Compiler
 CC		= cc
 CFLAGS	= -Werror -Wextra -Wall -std=c99
@@ -15,7 +18,7 @@ INC			=	-I ./includes/\
 				-I ./includes/libft/\
 
 # Sources
-SRC_PATH	=	src/
+SRC_PATH	=	src/main/
 SRC			=	add_free_stack.c \
 				find_cheapest.c \
 				move_cheapest.c \
@@ -26,12 +29,19 @@ SRC			=	add_free_stack.c \
 				utils.c \
 				split.c
 
+# Bonus sources
+BSRC_PATH = src/bonus/
+BSRC = bonus.c \
+
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
+BSRCS		= $(addprefix $(BSRC_PATH), $(BSRC))
 
 # Objects
 OBJ_PATH	= obj/
 OBJ			= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+BOBJ		= $(BSRC:.c=.o)
+BOBJS		= $(addprefix $(OBJ_PATH), $(BOBJ))
 
 all: $(LIBFT) $(NAME)
 
@@ -52,7 +62,8 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC)
 	@echo "push_swap is ready."
 
-bonus: all
+bonus: all $(BOBJS)
+		
 
 clean:
 	@echo "Removing .o object files..."
@@ -66,4 +77,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean bonus
