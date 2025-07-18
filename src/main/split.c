@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:26 by llupache          #+#    #+#             */
-/*   Updated: 2025/07/03 02:11:41 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 20:00:32 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	*clean1(char **res, int count)
 {
@@ -20,7 +20,7 @@ void	*clean1(char **res, int count)
 	return (NULL);
 }
 
-static int	count_words(const char *s)
+int	count_words1(const char *s)
 {
 	int	count;
 	int	in_word;
@@ -41,7 +41,7 @@ static int	count_words(const char *s)
 	return (count);
 }
 
-static char	*get_next_word(const char **s)
+char	*get_next_word1(const char **s)
 {
 	const char	*start;
 	size_t		len;
@@ -73,13 +73,13 @@ char	**split(const char *s)
 		return (NULL);
 	s_ptr = (char *)s;
 	count = 0;
-	word_count = count_words(s);
+	word_count = count_words1(s);
 	result = malloc((word_count + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	while (count < word_count)
 	{
-		result[count] = get_next_word(&s_ptr);
+		result[count] = get_next_word1(&s_ptr);
 		if (!result[count])
 			return (clean1(result, count));
 		count++;
@@ -87,27 +87,3 @@ char	**split(const char *s)
 	result[word_count] = NULL;
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-// 	char	**new;
-
-// 	str = "";
-// 	// new = ft_split("", 'a');
-// 	// printf("%s", new[0]);
-// 	if (!(new = ft_split("", 'z')))
-// 		printf("NULL");
-// 	else
-// 	{
-// 		if (!new[0])
-// 			printf("ok\n");
-// 	}
-// 	// if (!new[0])
-// 	// 	printf("ok\n");
-// 	// while (*new != NULL)
-// 	// {
-// 	// 	printf("%s, ", *new);
-// 	// 	new ++;
-// 	// }
-// }

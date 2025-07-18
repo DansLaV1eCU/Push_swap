@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cheapest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danslav1e <danslav1e@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llupache <llupache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 18:35:43 by danslav1e         #+#    #+#             */
-/*   Updated: 2025/07/02 20:08:36 by danslav1e        ###   ########.fr       */
+/*   Updated: 2025/07/08 18:43:01 by llupache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_two_ints	min_of_three(int a, int b, int c)
 {
 	t_two_ints	t;
 
+	ft_memset(&t, 0, sizeof(t_two_ints));
 	if (c <= a && c <= b)
 	{
 		t.count = c;
